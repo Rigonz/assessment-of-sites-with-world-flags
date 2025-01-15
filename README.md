@@ -16,7 +16,7 @@ The assessment compares the relative performance of the sources along the follow
  - Size and aspect ratio
  - Color
 
-The main scripts I have used, in python, are included in the folder *./scripts*; the images are in *./IMG*.
+The main scripts I have used, in python, are included in the folder *./scripts*; the images, flags and results, are in *./IMG*.
 
 I use the [ISO alpha-3 code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) for the identification of the countries (I retain XKX for Kosovo and add EUR for the European Union; entities without iso-3 code, e.g. Wales, are not included). With regard to names, I generally follow the criteria used in the GitHub repository [Country Codes](https://github.com/datasets/country-codes).
 
