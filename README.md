@@ -7,7 +7,7 @@ The sources I evaluated are:
 1. [Country-Flags](https://github.com/hampusborgos/country-flags), a GitHub repository that claims to contain *accurate renders of all the worlds flags in SVG and PNG format*, **CF**.
 2. [Encyclopedia Britannica (students)](https://kids.britannica.com/students/article/flags-of-the-world/274335), **EB**.
 3. The CIA's [World FactBook](https://www.cia.gov/the-world-factbook/references/flags-of-the-world/), **FB**.
-4. The [Wikipedia](https://en.m.wikipedia.org/wiki/List_of_national_flags_of_sovereign_states), **WK**.
+4. [Wikipedia](https://en.m.wikipedia.org/wiki/List_of_national_flags_of_sovereign_states), **WK**.
 5. Worldodometer for [countries](https://www.worldometers.info/geography/flags-of-the-world/) and [dependent territories](https://www.worldometers.info/geography/flags-of-dependent-territories/), **WO**.
 
 
@@ -16,7 +16,7 @@ The assessment compares the relative performance of the sources along the follow
  - Size and aspect ratio
  - Color
 
-The main scripts I have used, in python, are included in the folder *./scripts*; the images, flags and results, are in *./IMG*.
+The main scripts I have used, in python, are included in the folder [./scripts](https://github.com/Rigonz/assessment-of-sites-with-world-flags/tree/main/scripts); the images, flags and results, are in [./IMG](https://github.com/Rigonz/assessment-of-sites-with-world-flags/tree/main/IMG) .
 
 I use the [ISO alpha-3 code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) for the identification of the countries (I retain XKX for Kosovo and add EUR for the European Union; entities without iso-3 code, e.g. Wales, are not included). With regard to names, I generally follow the criteria used in the GitHub repository [Country Codes](https://github.com/datasets/country-codes).
 
@@ -33,10 +33,10 @@ The formats of the scraped images are:
  
 ## Number of flags
 The comparison of the sources by the number of flags is slightly skewed because not all have the same scope, which in all cases should include the internationally recognized states. The range varies between 196 (EB) and 251 (CF) flags.
-The attached diagram shows the quantitative relationships among the sources, while **this csv file** provides the details.
+The attached diagram shows the quantitative relationships among the sources, while the csv file *./scripts/countries_flags_R0.csv* provides the details.
 [![countries-flags-R0.png](https://i.postimg.cc/sxhc73JW/countries-flags-R0.png)](https://postimg.cc/p5Pztb4V)
 
-Script *120_flags_show_R0.py* plots the versions of the flags per country in an arrangement that facilitates the comparisons among sources. The printout results are included in folder *./120PNG*, and a couple of them can be seen here:
+Script *120_flags_show_R0.py* plots the versions of the flags per country in an arrangement that facilitates the comparisons among sources. The printout results are included in folder *./IMG/120PNG*, and a couple of them can be seen here:
 [![ARG](https://i.postimg.cc/kM8zXHK3/ARG.png)](https://postimg.cc/QV80f0f0)
 [![ZAF](https://i.postimg.cc/7YkcCNnC/ZAF.png)](https://postimg.cc/grg4Q85d)
 
@@ -49,7 +49,7 @@ Britannica sets a strict dimensional constraint, the World FactBook has a wider 
 
 Also one would expect that the aspect ratio (width/height) for a given country did not change across the sources. But here are the results using as reference the aspect ratios of Country-Flags:
 [![aspect-ratios.png](https://i.postimg.cc/JhwCwhsy/aspect-ratios.png)](https://postimg.cc/qNG5y4X0)
-For sources other than Wikipedia, roughly 20% of the flags have an aspect ratio that differs more than ±10% of the reference value, and even the Encyclopedia Britannica has nearly 5% of the flags 10% narrower than the reference. Also here Worldodometer mimics the World FactBook.
+For the World FactBook and Worldodometer roughly 20% of the flags have an aspect ratio that differs more than ±10% of the reference value, and even the Encyclopedia Britannica has nearly 5% of the flags 10% narrower than the reference. Also here Worldodometer mimics the World FactBook.
 Although the average and median are centered around zero, the number of outliers is surprisingly large.
 
 ## Color
@@ -57,13 +57,13 @@ I have computed the normalized color histogram for each flag, in RGB space. This
 
 This measure combines two separate aspects: differences in color, and differences in the areas associated to each color. It is clearly not a perfect measure, but it is intuitive enough and separates the color dimensions. My comparison does also not consider aspects as the representation of the coat of arms, just the quantitative use of colors. I considered other measures of image difference as [SSMI](https://en.wikipedia.org/wiki/Structural_similarity_index_measure), but thought it was not as clear.
 
-The task is done by the script *180_flags_color_R0.py* and the results are in *./180PNG*, with two examples here. The chart on the left is a 3d histogram and represents the frequency of each RGB color, associated to the size of the bubble; the chart on the right shows a measure of error for each color band and the sum of the three, using as reference the image of Country-Flags. 
+The task is done by the script *180_flags_color_R0.py* and the results are in *./IMG/180PNG*, with two examples here. The chart on the left is a 3d histogram and represents the frequency of each RGB color, associated to the size of the bubble; the chart on the right shows a measure of error for each color band and the sum of the three, using as reference the image of Country-Flags. 
 
-[Note: The error on each color band is computed as the Euclidean distance on the cumulated frequency distribution of color intensity between a given image and the reference, normalized. The total error is the sum of the errors on each color band.]
+[Note: The error on each color band is computed as the total area difference on the cumulated frequency distribution of color intensity between a given image and the reference, normalized. The total error is the sum of the errors on each color band.]
 [![ARG.png](https://i.postimg.cc/0jr3tK96/ARG.png)](https://postimg.cc/ZvtVnRBZ)
 [![ZAF.png](https://i.postimg.cc/fyFP1Wb8/ZAF.png)](https://postimg.cc/wRXFmpLN)
 
-The differences among the sources are amazing, as already presented in the comparison of representations, but here it is also possible to identify the extent of transition colors. The pairs  World FactBook/Worldodometer and  Country-Flags/Wikipedia are also fairly clear.
+The differences among the sources on this color measurements are amazing, as already presented in the comparison of flag representations, but here it is also possible to identify the extent of transition colors. The pairs  World FactBook/Worldodometer and  Country-Flags/Wikipedia are also fairly clear.
 This is shown in the following scatter plot that compares the total errors:
 [![err-corr.png](https://i.postimg.cc/K8hqTH33/err-corr.png)](https://postimg.cc/PPKQsK4d)
 
